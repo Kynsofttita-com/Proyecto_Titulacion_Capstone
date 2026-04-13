@@ -1,24 +1,83 @@
-# Compiled class file
+# ========================
+# JAVA / SPRING BOOT
+# ========================
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
-*.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
+target/
+build/
+.mvn/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# ========================
+# MAVEN
+# ========================
+pom.xml.tag
+pom.xml.releaseBackup
+dependency-reduced-pom.xml
+
+# ========================
+# SPRING BOOT
+# ========================
+application-local.properties
+application-local.yml
+application-dev.yml
+*.env
+
+# ========================
+# VUE.JS / NODE
+# ========================
+node_modules/
+dist/
+.vite/
+*.local
+npm-debug.log*
+
+# ========================
+# DOCKER
+# ========================
+docker-compose.override.yml
+.env
+.env.local
+.env.*.local
+
+# ========================
+# POSTGRESQL
+# ========================
+pgdata/
+postgres-data/
+
+# ========================
+# INTELLIJ
+# ========================
+.idea/
+*.iml
+*.iws
+out/
+
+# ========================
+# VSCODE
+# ========================
+.vscode/
+
+# ========================
+# SISTEMA OPERATIVO
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# LOGS
+# ========================
+logs/
+*.log
+
+# ========================
+# SEGURIDAD
+# ========================
+*.pem
+*.key
+*.p12
+*.jks
+secrets/
