@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: ms-estudiantes
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:ds-postgres}:${DB_PORT:5432}/db_estudiantes
+    username: ${DB_USER:dsadmin}
+    password: ${DB_PASS:dspass2026}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
