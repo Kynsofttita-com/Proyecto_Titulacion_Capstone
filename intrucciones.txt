@@ -1,0 +1,20 @@
+Levantar PostgreSQL
+    cd infrastructure\docker                               -->carpeta del docker
+    docker-compose up -d postgres                          -->Levantar
+    docker exec -it ds-postgres psql -U dsadmin -l         -->Verificar 
+
+
+Levantar RabbitMQ
+    docker-compose up -d rabbitmq                          -->Levantar
+    http://localhost:15672                                 -->Verificar
+        Usuario:dsrabbit
+        Contraseña: dsrabbit2026
+
+
+Compilar Eureka-server
+    cd C:\Users\hmate\OneDrive\Documentos\Udla\TITA Semestre 2\Proyecto_Titulacion_Capstone\backend\eureka-server
+    mvn clean package -DskipTests                          -->Compilar
+Levantar Eureka-server
+    cd C:\Users\hmate\OneDrive\Documentos\Udla\TITA Semestre 2\Proyecto_Titulacion_Capstone\infrastructure\docker
+    docker-compose up -d eureka-server                     -->Levantar
+    
