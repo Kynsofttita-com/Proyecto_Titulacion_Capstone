@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: ms-notificaciones
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:ds-postgres}:${DB_PORT:5432}/db_notificaciones
+    username: ${DB_USER:dsadmin}
+    password: ${DB_PASS:dspass2026}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  rabbitmq:
+    host: ${RABBITMQ_HOST:ds-rabbitmq}
+    port: 5672
+    username: ${RABBITMQ_USER:dsrabbit}
+    password: ${RABBITMQ_PASS:dsrabbit2026}
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USER:your-email@gmail.com}
+    password: ${MAIL_PASS:your-app-password}

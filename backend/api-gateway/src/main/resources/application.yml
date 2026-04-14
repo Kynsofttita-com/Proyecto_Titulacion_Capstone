@@ -1,0 +1,90 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:http://ds-config:8888"
+  cloud:
+    gateway:
+      routes:
+        # MS-Auth routes
+        - id: ms-auth
+          uri: lb://ms-auth
+          predicates:
+            - Path=/api/auth/**,/api/users/**
+
+        # MS-Estudiantes routes
+        - id: ms-estudiantes
+          uri: lb://ms-estudiantes
+          predicates:
+            - Path=/api/estudiantes/**
+
+        # MS-Instructores routes
+        - id: ms-instructores
+          uri: lb://ms-instructores
+          predicates:
+            - Path=/api/instructores/**
+
+        # MS-Vehiculos routes
+        - id: ms-vehiculos
+          uri: lb://ms-vehiculos
+          predicates:
+            - Path=/api/vehiculos/**
+
+        # MS-Asignaciones routes
+        - id: ms-asignaciones
+          uri: lb://ms-asignaciones
+          predicates:
+            - Path=/api/asignaciones/**,/api/clases/**
+
+        # MS-Cobros routes
+        - id: ms-cobros
+          uri: lb://ms-cobros
+          predicates:
+            - Path=/api/cobros/**,/api/pagos/**
+
+        # MS-Reportes routes
+        - id: ms-reportes
+          uri: lb://ms-reportes
+          predicates:
+            - Path=/api/reportes/**
+
+        # MS-Notificaciones routes
+        - id: ms-notificaciones
+          uri: lb://ms-notificaciones
+          predicates:
+            - Path=/api/notificaciones/**
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

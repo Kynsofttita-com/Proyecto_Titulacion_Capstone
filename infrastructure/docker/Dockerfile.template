@@ -1,0 +1,30 @@
+# ========================
+# STAGE 1: BUILD
+# ========================
+FROM maven:3.9-eclipse-temurin-21-alpine AS build
+WORKDIR /app
+
+# Copiar pom.xml primero para cachear dependencias
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Copiar código fuente y compilar
+COPY src ./src
+RUN mvn package -DskipTests -B
+
+# ========================
+# STAGE 2: RUN
+# ========================
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+
+# Copiar jar desde stage de build
+COPY --from=build /app/target/*.jar app.jar
+
+# Puerto del microservicio (cambiar según cada MS)
+EXPOSE ${PORT}
+
+# Variables de entorno por defecto
+ENV JAVA_OPTS="-Xms256m -Xmx512m"
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
