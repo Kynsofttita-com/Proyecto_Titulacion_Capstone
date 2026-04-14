@@ -26,3 +26,9 @@ Levantar Eureka-server
     cd C:\Users\hmate\OneDrive\Documentos\Udla\TITA Semestre 2\Proyecto_Titulacion_Capstone\infrastructure\docker
     docker-compose up -d --build config-server             -->Levantar
 
+
+Compolar Api GetWay
+    cd C:\Users\hmate\OneDrive\Documentos\Udla\TITA Semestre 2\Proyecto_Titulacion_Capstone\backend\api-gateway
+    mvn clean package -DskipTests                          -->Compilar
+Levantar Api GetWay
+    docker-compose up -d --build api-gateway               -->Levantar
