@@ -1,62 +1,45 @@
-\---
-
+---
 name: 🐛 Bug Report
-
 about: Reportar un error o comportamiento inesperado
-
-title: '\[BUG] '
-
+title: '[BUG] '
 labels: bug
-
 assignees: ''
+---
 
-\---
+## 🐛 Descripción del Bug
+<!-- Descripción clara y concisa del bug -->
 
+## 📍 Microservicio afectado
+- [ ] MS-Auth
+- [ ] MS-Estudiantes
+- [ ] MS-Instructores
+- [ ] MS-Vehículos
+- [ ] MS-Asignaciones
+- [ ] MS-Cobros
+- [ ] MS-Reportes
+- [ ] MS-Notificaciones
+- [ ] Frontend Vue.js
+- [ ] API Gateway
 
+## 🔄 Pasos para reproducir
+1. Ir a '...'
+2. Hacer clic en '...'
+3. Ver el error
 
-\## 🐛 Descripción del Bug
+## ✅ Comportamiento esperado
+<!-- Qué debería pasar -->
 
+## ❌ Comportamiento actual
+<!-- Qué está pasando actualmente -->
 
+## 📸 Screenshots
+<!-- Si aplica, agrega capturas -->
 
-\## 📍 Microservicio afectado
+## 🖥️ Entorno
+- OS: [ej: Windows 11, macOS]
+- Navegador: [ej: Chrome 120]
+- Versión del proyecto: [ej: v1.0.0]
 
-\- \[ ] MS-Auth
-
-\- \[ ] MS-Estudiantes
-
-\- \[ ] MS-Instructores
-
-\- \[ ] MS-Vehículos
-
-\- \[ ] MS-Asignaciones
-
-\- \[ ] MS-Cobros
-
-\- \[ ] MS-Reportes
-
-\- \[ ] MS-Notificaciones
-
-\- \[ ] Frontend Vue.js
-
-
-
-\## 🔄 Pasos para reproducir
-
-1\. 
-
-2\. 
-
-3\. 
-
-
-
-\## ✅ Comportamiento esperado
-
-
-
-\## ❌ Comportamiento actual
-
-
-
-\## 📋 Logs relevantes
-
+## 📋 Logs relevantes
+## 📌 Información adicional
+<!-- Cualquier contexto adicional sobre el problema -->
