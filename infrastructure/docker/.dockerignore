@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+.github
+
+# Documentación
+*.md
+
+# Build artifacts
+target/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
