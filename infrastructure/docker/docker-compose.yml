@@ -1,0 +1,97 @@
+version: "3.8"
+
+networks:
+  driving-school-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: ds-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - driving-school-net
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: ds-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - driving-school-net
+
+  eureka-server:
+    build:
+      context: ../../backend/eureka-server
+      dockerfile: Dockerfile
+    container_name: ds-eureka
+    restart: always
+    ports:
+      - "8761:8761"
+    networks:
+      - driving-school-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+  
+  config-server:
+    build:
+      context: ../../backend/config-server
+      dockerfile: Dockerfile
+    container_name: ds-config
+    restart: always
+    ports:
+      - "8888:8888"
+    networks:
+      - driving-school-net
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
+
+
+  api-gateway:
+    build:
+      context: ../../backend/api-gateway
+      dockerfile: Dockerfile
+    container_name: ds-gateway
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - driving-school-net
+    depends_on:
+      - eureka-server
+      - config-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
