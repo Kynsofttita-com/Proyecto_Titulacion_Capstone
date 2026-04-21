@@ -1,0 +1,33 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ms-asignaciones
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:ds-postgres}:${DB_PORT:5432}/db_asignaciones
+    username: ${DB_USER:dsadmin}
+    password: ${DB_PASS:dspass2026}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  rabbitmq:
+    host: ${RABBITMQ_HOST:ds-rabbitmq}
+    port: 5672
+    username: ${RABBITMQ_USER:dsrabbit}
+    password: ${RABBITMQ_PASS:dsrabbit2026}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
