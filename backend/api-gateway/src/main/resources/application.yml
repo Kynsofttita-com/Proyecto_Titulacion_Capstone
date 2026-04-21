@@ -8,7 +8,8 @@ spring:
     import: "optional:configserver:http://ds-config:8888"
   cloud:
     gateway:
-      routes:
+      mvc:
+        routes:
         # MS-Auth routes
         - id: ms-auth
           uri: lb://ms-auth
@@ -57,7 +58,7 @@ spring:
           predicates:
             - Path=/api/notificaciones/**
 
-      globalcors:
+        globalcors:
         corsConfigurations:
           '[/**]':
             allowedOrigins:

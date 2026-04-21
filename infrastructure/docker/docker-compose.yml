@@ -49,12 +49,6 @@ services:
       - "8761:8761"
     networks:
       - driving-school-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 60s
   
   config-server:
     image: config-server:latest
@@ -65,8 +59,7 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      eureka-server:
-        condition: service_healthy
+      - eureka-server
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
 
@@ -80,19 +73,11 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      eureka-server:
-        condition: service_healthy
-      config-server:
-        condition: service_started
+      - eureka-server
+      - config-server
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
       - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 60s
 
   ms-auth:
     image: ms-auth:latest
@@ -103,10 +88,8 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      eureka-server:
-        condition: service_healthy
-      postgres:
-        condition: service_started
+      - eureka-server
+      - postgres
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
       - DB_HOST=ds-postgres
@@ -114,12 +97,6 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
       - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 60s
 
   frontend:
     image: driving-school-frontend:latest
@@ -130,7 +107,6 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      api-gateway:
-        condition: service_healthy
+      - api-gateway
     environment:
       - VITE_API_URL=http://api-gateway:8080

@@ -14,11 +14,11 @@ export const useAuthStore = defineStore('auth', () => {
       const { data } = response
 
       token.value = data.token
-      user.value = { id: data.userId, email }
-      role.value = data.role
+      user.value = { id: data.user.id, email: data.user.email }
+      role.value = data.user.roles?.[0] || null
 
       localStorage.setItem('token', data.token)
-      localStorage.setItem('role', data.role)
+      localStorage.setItem('role', role.value)
 
       return true
     } catch (error) {

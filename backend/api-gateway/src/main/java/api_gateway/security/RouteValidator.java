@@ -13,6 +13,8 @@ public class RouteValidator {
             "/api/auth/login",
             "/api/auth/forgot-password",
             "/api/auth/reset-password",
+            "/api/auth/dev/generate-hash",
+            "/actuator/health",
             "/swagger-ui",
             "/v3/api-docs"
     );

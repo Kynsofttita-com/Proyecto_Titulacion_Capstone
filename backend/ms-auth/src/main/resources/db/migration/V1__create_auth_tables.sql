@@ -86,19 +86,19 @@ INSERT INTO roles (name, description) VALUES
 
 -- =============================================
 -- SEED DATA: Usuario Admin por defecto
--- Password: Admin2026! (bcrypt hash)
+-- Password: Admin2026! (bcrypt hash, cost=10)
 -- =============================================
 INSERT INTO users (
     id,
-    email, 
-    password_hash, 
-    first_name, 
-    last_name, 
+    email,
+    password_hash,
+    first_name,
+    last_name,
     status
 ) VALUES (
     gen_random_uuid(),
     'admin@kynsoft.com',
-    '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj6o8iLrVTsS',
+    '$2a$10$h70JsZR1piK48H5iVbtOr.Tdg4sp4.WKvD6V3WARMRFbC3EMsoc7K',
     'Admin',
     'Kynsoft',
     'ACTIVE'
