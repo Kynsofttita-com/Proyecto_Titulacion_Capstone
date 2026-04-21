@@ -1,6 +1,5 @@
 package com.kynsoft.auth.service;
 
-import com.kynsoft.auth.dto.AssignRoleRequest;
 import com.kynsoft.auth.dto.ChangeStatusRequest;
 import com.kynsoft.auth.dto.CreateUserRequest;
 import com.kynsoft.auth.dto.UpdateUserRequest;
@@ -14,10 +13,10 @@ import org.springframework.data.domain.Pageable;
 import java.util.UUID;
 
 public interface UserService {
+    Page<UserResponse> findAll(Pageable pageable, UserStatus statusFilter);
+    UserResponse findById(UUID id);
     UserResponse createUser(CreateUserRequest request, HttpServletRequest httpRequest);
     UserResponse updateUser(UUID id, UpdateUserRequest request, HttpServletRequest httpRequest);
     void changeStatus(UUID id, ChangeStatusRequest request, HttpServletRequest httpRequest);
-    UserResponse findById(UUID id);
-    Page<UserResponse> findAll(Pageable pageable, UserStatus statusFilter);
     void assignRole(UUID userId, RoleName roleName, HttpServletRequest httpRequest);
 }
