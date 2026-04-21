@@ -89,9 +89,54 @@ services:
       - config-server
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
+      - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+  ms-auth:
+    build:
+      context: ../../backend/ms-auth
+      dockerfile: Dockerfile
+    container_name: ds-ms-auth
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - driving-school-net
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
+      - DB_HOST=ds-postgres
+      - DB_PORT=5432
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ../../driving-school-app
+      dockerfile: Dockerfile
+    container_name: ds-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    networks:
+      - driving-school-net
+    depends_on:
+      - api-gateway
+    environment:
+      - VITE_API_URL=http://api-gateway:8080
