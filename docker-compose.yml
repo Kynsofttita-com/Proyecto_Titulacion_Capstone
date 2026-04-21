@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   # ============================================
@@ -80,9 +79,9 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
       eureka-server:
-        condition: service_healthy
+        condition: service_started
       postgres:
-        condition: service_healthy
+        condition: service_started
     networks:
       - driving-school-network
     healthcheck:
@@ -115,11 +114,11 @@ services:
       - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
     depends_on:
       config-server:
-        condition: service_healthy
+        condition: service_started
       postgres:
-        condition: service_healthy
+        condition: service_started
       rabbitmq:
-        condition: service_healthy
+        condition: service_started
     networks:
       - driving-school-network
     healthcheck:
@@ -145,9 +144,9 @@ services:
       - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
     depends_on:
       config-server:
-        condition: service_healthy
+        condition: service_started
       ms-auth:
-        condition: service_healthy
+        condition: service_started
     networks:
       - driving-school-network
     healthcheck:
