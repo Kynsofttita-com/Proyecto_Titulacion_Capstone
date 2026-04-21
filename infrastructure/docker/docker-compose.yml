@@ -42,9 +42,7 @@ services:
       - driving-school-net
 
   eureka-server:
-    build:
-      context: ../../backend/eureka-server
-      dockerfile: Dockerfile
+    image: eureka-server:latest
     container_name: ds-eureka
     restart: always
     ports:
@@ -55,13 +53,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
   
   config-server:
-    build:
-      context: ../../backend/config-server
-      dockerfile: Dockerfile
+    image: config-server:latest
     container_name: ds-config
     restart: always
     ports:
@@ -69,15 +65,14 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      - eureka-server
+      eureka-server:
+        condition: service_healthy
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
 
 
   api-gateway:
-    build:
-      context: ../../backend/api-gateway
-      dockerfile: Dockerfile
+    image: api-gateway:latest
     container_name: ds-gateway
     restart: always
     ports:
@@ -85,8 +80,10 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      - eureka-server
-      - config-server
+      eureka-server:
+        condition: service_healthy
+      config-server:
+        condition: service_started
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
       - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
@@ -94,13 +91,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
   ms-auth:
-    build:
-      context: ../../backend/ms-auth
-      dockerfile: Dockerfile
+    image: ms-auth:latest
     container_name: ds-ms-auth
     restart: always
     ports:
@@ -123,13 +118,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
   frontend:
-    build:
-      context: ../../driving-school-app
-      dockerfile: Dockerfile
+    image: driving-school-frontend:latest
     container_name: ds-frontend
     restart: always
     ports:
@@ -137,6 +130,7 @@ services:
     networks:
       - driving-school-net
     depends_on:
-      - api-gateway
+      api-gateway:
+        condition: service_healthy
     environment:
       - VITE_API_URL=http://api-gateway:8080
