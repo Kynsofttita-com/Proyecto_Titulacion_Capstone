@@ -1,196 +1,102 @@
 <template>
-  <div class="min-h-screen flex items-stretch" style="background: white">
-    <!-- Left Side - Navy with Content -->
-    <div class="hidden lg:flex lg:w-1/2 flex-col justify-between p-16 relative overflow-hidden" style="background: #1a2735">
-      <!-- Top Logo -->
-      <div class="flex items-center space-x-2">
-        <div class="w-3 h-3 rounded-full" style="background: #b87333"></div>
-        <span class="text-sm font-light" style="color: #e8d8cb">Driving School · 06</span>
-      </div>
+  <div class="login-container">
+    <!-- Fondo con ondas decorativas -->
+    <svg class="waves-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Fondo base navy -->
+      <rect width="1440" height="900" fill="#1a2735" />
 
-      <!-- Main Content -->
-      <div>
-        <p class="text-sm font-light mb-6" style="color: #b87333">— ACCESO DE MIEMBROS</p>
-        <h1 class="text-5xl font-light leading-tight mb-8" style="color: white">
-          Bienvenido de<br />vuelta,
-          <span style="color: #b87333">sigamos<br />donde lo<br />dejaste.</span>
-        </h1>
-        <p class="text-sm font-light leading-relaxed" style="color: #999">
-          Entra para retomar tus proyectos,<br />colecciones guardadas y la mesa de<br />trabajo compartida con tu equipo.
-        </p>
-      </div>
+      <!-- Onda superior (más clara) -->
+      <path d="M0,120 C280,40 520,180 780,120 C1020,70 1240,160 1440,100 L1440,0 L0,0 Z"
+            fill="#2a3a4d" opacity="0.85" />
 
-      <!-- Bottom Info -->
-      <div class="space-y-4">
-        <div class="flex items-start space-x-2 text-xs font-light" style="color: #999">
-          <div class="w-2 h-2 rounded-full mt-1" style="background: #b87333"></div>
-          <div>
-            <p>Sesión cifrada</p>
-            <p>TLS 1.3 · Verificación en dos pasos</p>
-            <p>disponible</p>
-          </div>
-        </div>
-        <div class="flex justify-between text-xs" style="color: #666">
-          <span>Servicio operativo</span>
-          <span>09:42</span>
-        </div>
-      </div>
+      <!-- Onda intermedia (cobre suave) -->
+      <path d="M0,260 C240,180 500,320 760,260 C1000,210 1220,300 1440,240 L1440,0 L0,0 Z"
+            fill="#b87333" opacity="0.18" />
 
-      <!-- Decorative circles -->
-      <div class="absolute bottom-0 right-0 opacity-10">
-        <svg width="300" height="300" viewBox="0 0 300 300">
-          <circle cx="150" cy="150" r="120" fill="none" stroke="#b87333" stroke-width="1"/>
-          <circle cx="150" cy="150" r="80" fill="none" stroke="#b87333" stroke-width="1"/>
-          <circle cx="150" cy="150" r="40" fill="none" stroke="#b87333" stroke-width="1"/>
-        </svg>
-      </div>
+      <!-- Onda media-baja -->
+      <path d="M0,640 C240,560 480,720 760,660 C1020,605 1240,700 1440,640 L1440,900 L0,900 Z"
+            fill="#0f1a24" opacity="0.7" />
+
+      <!-- Onda inferior cobre -->
+      <path d="M0,780 C280,720 520,840 780,780 C1020,730 1240,810 1440,760 L1440,900 L0,900 Z"
+            fill="#b87333" opacity="0.25" />
+
+      <!-- Onda final navy oscuro -->
+      <path d="M0,840 C240,800 500,870 760,830 C1020,795 1240,860 1440,820 L1440,900 L0,900 Z"
+            fill="#0a1420" opacity="0.9" />
+    </svg>
+
+    <!-- Logo en esquina superior -->
+    <div class="top-logo">
+      <div class="logo-dot"></div>
+      <span>Driving School · 06</span>
     </div>
 
-    <!-- Right Side - Cream Form -->
-    <div class="w-full lg:w-1/2 flex flex-col justify-center p-8 lg:p-16" style="background: #e8d8cb">
-      <!-- Header -->
-      <div class="mb-12">
-        <p class="text-xs font-semibold tracking-widest mb-6" style="color: #b87333">— INGRESAR</p>
-        <h2 class="text-4xl font-light mb-4" style="color: #1a2735">Accede a tu cuenta</h2>
-        <p class="text-sm" style="color: #666">
-          ¿No tienes una?
-          <a href="#" class="font-medium" style="color: #b87333">Crea una cuenta en dos minutos.</a>
-        </p>
+    <!-- Card central -->
+    <div class="login-card">
+      <!-- Encabezado -->
+      <div class="card-header">
+        <p class="eyebrow">— ACCESO DE MIEMBROS</p>
+        <h1 class="title">Bienvenido de vuelta</h1>
+        <p class="subtitle">Ingresa tus credenciales para continuar</p>
       </div>
 
-      <!-- Social Buttons -->
-      <div class="flex gap-4 mb-8">
-        <button class="flex-1 py-3 px-4 rounded-lg font-medium transition-all hover:bg-white hover:shadow-md" style="background: white; color: #1a2735; border: 1px solid #ddd">
-          <span class="flex items-center justify-center space-x-2">
-            <span>G</span>
-            <span>Google</span>
-          </span>
-        </button>
-        <button class="flex-1 py-3 px-4 rounded-lg font-medium transition-all hover:bg-white hover:shadow-md" style="background: white; color: #1a2735; border: 1px solid #ddd">
-          <span class="flex items-center justify-center space-x-2">
-            <span>🍎</span>
-            <span>Apple</span>
-          </span>
-        </button>
-      </div>
-
-      <!-- Divider -->
-      <div class="flex items-center gap-4 mb-8">
-        <div class="flex-1" style="border-top: 1px solid rgba(26, 39, 53, 0.1)"></div>
-        <span class="text-xs font-semibold" style="color: #999">O CON CORREO</span>
-        <div class="flex-1" style="border-top: 1px solid rgba(26, 39, 53, 0.1)"></div>
-      </div>
-
-      <!-- Form -->
-      <form @submit.prevent="handleLogin" class="space-y-6">
+      <!-- Formulario -->
+      <form @submit.prevent="handleLogin" class="login-form">
         <!-- Email -->
-        <div>
-          <label class="text-xs font-semibold block mb-3" style="color: #1a2735">Correo electrónico</label>
-          <div class="flex items-center px-4 py-3 rounded-lg" style="background: white">
-            <svg class="w-5 h-5 mr-3" style="color: #999" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <input
-              v-model="email"
-              type="email"
-              required
-              class="flex-1 bg-transparent focus:outline-none text-sm"
-              style="color: #1a2735"
-              placeholder="tunombre@estudio.com"
-            />
-          </div>
-        </div>
-
-        <!-- Password -->
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <label class="text-xs font-semibold" style="color: #1a2735">Contraseña</label>
-            <a href="#" class="text-xs font-medium" style="color: #b87333">¿La olvidaste?</a>
-          </div>
-          <div class="flex items-center px-4 py-3 rounded-lg" style="background: white">
-            <svg class="w-5 h-5 mr-3" style="color: #999" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-            <input
-              v-model="password"
-              type="password"
-              required
-              class="flex-1 bg-transparent focus:outline-none text-sm"
-              style="color: #1a2735"
-              placeholder="Mínimo 8 caracteres"
-            />
-          </div>
-        </div>
-
-        <!-- Remember -->
-        <label class="flex items-center cursor-pointer">
+        <div class="input-group">
           <input
-            v-model="rememberMe"
-            type="checkbox"
-            class="w-4 h-4"
-            style="accentColor: #b87333"
+            v-model="email"
+            type="email"
+            required
+            placeholder="Correo electrónico"
+            class="form-input"
           />
-          <span class="ml-3 text-sm font-medium" style="color: #1a2735">Recuérdame 30 días</span>
-        </label>
+        </div>
 
-        <!-- Button -->
+        <!-- Contraseña -->
+        <div class="input-group">
+          <input
+            v-model="password"
+            type="password"
+            required
+            placeholder="Contraseña"
+            class="form-input"
+          />
+        </div>
+
+        <!-- Olvidó contraseña -->
+        <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+
+        <!-- Botón -->
         <button
           type="submit"
           :disabled="loading"
-          class="w-full mt-8 py-3.5 px-4 rounded-lg font-semibold text-white transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-          :style="{
-            background: loading ? '#8b5a2b' : '#1a2735'
-          }"
+          class="submit-btn"
         >
-          <span v-if="loading">
-            <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          <span v-if="loading" class="loader-wrap">
+            <svg class="spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="spinner-track" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="spinner-head" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
             </svg>
           </span>
-          <span v-else>
-            Entrar
-            <span style="margin-left: 8px">→</span>
-          </span>
+          <span v-else>INGRESAR</span>
         </button>
+
+        <!-- Mensaje de error -->
+        <transition name="fade">
+          <div v-if="error" class="error-msg">
+            {{ error }}
+          </div>
+        </transition>
       </form>
 
-      <!-- Error Message -->
-      <transition name="fade">
-        <div v-if="error" class="mt-6 p-4 rounded-lg text-xs font-medium" style="background: rgba(220, 38, 38, 0.1); color: #991b1b">
-          {{ error }}
-        </div>
-      </transition>
-
-      <!-- Footer -->
-      <div class="mt-12 pt-8 border-t" style="border-color: rgba(26, 39, 53, 0.1)">
-        <div class="flex items-center justify-between text-xs" style="color: #999">
-          <span>© ATELIER 2026</span>
-          <div class="flex space-x-4">
-            <a href="#" class="hover:opacity-70" style="color: #b87333">Ayuda</a>
-            <span>·</span>
-            <a href="#" class="hover:opacity-70" style="color: #b87333">Privacidad</a>
-          </div>
-        </div>
+      <!-- Footer del card -->
+      <div class="card-footer">
+        <span>¿No tienes cuenta?</span>
+        <a href="#" class="signup-link">Regístrate</a>
       </div>
     </div>
-
-    <!-- Mobile Logo (visible on small screens) -->
-    <div class="absolute top-4 left-4 lg:hidden flex items-center space-x-2">
-      <div class="w-2 h-2 rounded-full" style="background: #b87333"></div>
-      <span class="text-xs font-light" style="color: #1a2735">Driving School</span>
-    </div>
-
-    <!-- CSS -->
-    <style scoped>
-      .fade-enter-active, .fade-leave-active {
-        transition: opacity 0.3s ease;
-      }
-
-      .fade-enter-from, .fade-leave-to {
-        opacity: 0;
-      }
-    </style>
   </div>
 </template>
 
@@ -204,7 +110,6 @@ const authStore = useAuthStore()
 
 const email = ref('')
 const password = ref('')
-const rememberMe = ref(false)
 const loading = ref(false)
 const error = ref('')
 
@@ -226,3 +131,262 @@ const handleLogin = async () => {
   }
 }
 </script>
+
+<style scoped>
+/* ===== Contenedor principal ===== */
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ===== Fondo con ondas ===== */
+.waves-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ===== Logo superior ===== */
+.top-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+  color: #e8d8cb;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b87333;
+  box-shadow: 0 0 12px rgba(184, 115, 51, 0.6);
+}
+
+/* ===== Card central ===== */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: #e8d8cb;
+  border-radius: 16px;
+  padding: 3rem 2.5rem 2rem;
+  box-shadow:
+    0 30px 80px rgba(10, 20, 32, 0.5),
+    0 10px 30px rgba(10, 20, 32, 0.3);
+}
+
+/* ===== Encabezado ===== */
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #b87333;
+  margin: 0 0 1rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #1a2735;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ===== Formulario ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(26, 39, 53, 0.1);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #1a2735;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.form-input:focus {
+  border-color: #b87333;
+  box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.15);
+}
+
+/* ===== Link "olvidé contraseña" ===== */
+.forgot-link {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: #b87333;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.forgot-link:hover {
+  opacity: 0.75;
+}
+
+/* ===== Botón submit ===== */
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  background: #1a2735;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #b87333;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(184, 115, 51, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loader-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-track {
+  opacity: 0.25;
+}
+
+.spinner-head {
+  opacity: 0.9;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Mensaje de error ===== */
+.error-msg {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 8px;
+  color: #991b1b;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===== Footer del card ===== */
+.card-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(26, 39, 53, 0.1);
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.signup-link {
+  color: #b87333;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 0.35rem;
+  transition: opacity 0.2s ease;
+}
+
+.signup-link:hover {
+  opacity: 0.75;
+}
+
+/* ===== Transición de error ===== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2.5rem 1.75rem 1.75rem;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .top-logo {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+</style>
