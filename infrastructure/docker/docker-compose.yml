@@ -42,26 +42,16 @@ services:
       - driving-school-net
 
   eureka-server:
-    build:
-      context: ../../backend/eureka-server
-      dockerfile: Dockerfile
+    image: eureka-server:latest
     container_name: ds-eureka
     restart: always
     ports:
       - "8761:8761"
     networks:
       - driving-school-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
   
   config-server:
-    build:
-      context: ../../backend/config-server
-      dockerfile: Dockerfile
+    image: config-server:latest
     container_name: ds-config
     restart: always
     ports:
@@ -75,9 +65,7 @@ services:
 
 
   api-gateway:
-    build:
-      context: ../../backend/api-gateway
-      dockerfile: Dockerfile
+    image: api-gateway:latest
     container_name: ds-gateway
     restart: always
     ports:
@@ -89,9 +77,36 @@ services:
       - config-server
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
+
+  ms-auth:
+    image: ms-auth:latest
+    container_name: ds-ms-auth
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - driving-school-net
+    depends_on:
+      - eureka-server
+      - postgres
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ds-eureka:8761/eureka/
+      - DB_HOST=ds-postgres
+      - DB_PORT=5432
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - JWT_SECRET=driving-school-jwt-secret-key-minimum-512-bits-for-hs512-algorithm-2026-extended
+
+  frontend:
+    image: driving-school-frontend:latest
+    container_name: ds-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    networks:
+      - driving-school-net
+    depends_on:
+      - api-gateway
+    environment:
+      - VITE_API_URL=http://api-gateway:8080

@@ -1,0 +1,25 @@
+//{
+//  "permissions": {
+//    "allow": [
+//      "Bash(mvn package *)"
+//    ]
+//  }
+//}
+
+{
+  "permissions": {
+    "bash": {
+      "allowed": true,
+      "allowedCommands": ["*"]
+    },
+    "read": {
+      "allowed": true
+    },
+    "write": {
+      "allowed": true
+    },
+    "edit": {
+      "allowed": true
+    }
+  }
+}

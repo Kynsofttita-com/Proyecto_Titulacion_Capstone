@@ -1,0 +1,108 @@
+╔════════════════════════════════════════════════════════════════════╗
+║           🔑 JWT TOKEN - DRIVING SCHOOL API                        ║
+║                   VÁLIDO POR 24 HORAS                              ║
+╚════════════════════════════════════════════════════════════════════╝
+
+📅 FECHA DE GENERACIÓN: 2026-04-21 23:24:30 UTC
+⏰ EXPIRA EN: 24 horas (86400000 ms)
+
+═══════════════════════════════════════════════════════════════════════
+
+🔐 CREDENCIALES USADAS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Email:     admin@kynsoft.com
+Password:  Admin2026!
+Rol:       ADMIN
+
+═══════════════════════════════════════════════════════════════════════
+
+👤 DATOS DEL USUARIO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ID:        b9f21551-1cd9-4971-95d3-aabac4c13943
+Email:     admin@kynsoft.com
+Nombre:    Admin Kynsoft
+Estado:    ACTIVE
+Roles:     ADMIN
+
+═══════════════════════════════════════════════════════════════════════
+
+🎟️  JWT TOKEN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsImxhc3ROYW1lIjoiS3luc29mdCIsInJvbGVzIjpbIkFETUlOIl0sInVzZXJJZCI6ImI5ZjIxNTUxLTFjZDktNDk3MS05NWQzLWFhYmFjNGMxMzk0MyIsImVtYWlsIjoiYWRtaW5Aa3luc29mdC5jb20iLCJzdWIiOiJhZG1pbkBreW5zb2Z0LmNvbSIsImlhdCI6MTc3NjgxMzg3MCwiZXhwIjoxNzc2OTAwMjcwfQ.0pswRgvpde-VomzMbfiDKECtoicHWmfpxCUUJqfSSegwZKIkuxl6fDVjUEqcWDvZNpCQiJ2rTby_2QZSLgG4xQ
+
+═══════════════════════════════════════════════════════════════════════
+
+📍 CÓMO USAR EN POSTMAN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  Opción Fácil: Copiar en Headers
+   ───────────────────────────────────
+   En cualquier request, ve a la pestaña "Headers" y agrega:
+
+   Key:   Authorization
+   Value: Bearer eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUi...
+
+2️⃣  Opción Smart: Usar Variable
+   ─────────────────────────────
+   a) Ve a la colección Postman
+   b) Abre "Variables"
+   c) Crea/edita:
+      - Name: token
+      - Value: eyJhbGciOiJIUzUxMiJ9.eyJmaXJzdE5hbWUi...
+
+   d) En headers, usa:
+      Key:   Authorization
+      Value: Bearer {{token}}
+
+═══════════════════════════════════════════════════════════════════════
+
+🔧 ENDPOINTS A PROBAR:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ GET  http://localhost:8080/api/users
+   Header: Authorization: Bearer [TOKEN]
+
+✅ GET  http://localhost:8080/api/users/b9f21551-1cd9-4971-95d3-aabac4c13943
+   Header: Authorization: Bearer [TOKEN]
+
+✅ POST http://localhost:8080/api/users
+   Header: Authorization: Bearer [TOKEN]
+   Body: {
+     "email": "test@kynsoft.com",
+     "password": "Test123!",
+     "name": "Test User"
+   }
+
+═══════════════════════════════════════════════════════════════════════
+
+📥 ARCHIVOS DISPONIBLES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Driving_School_API.postman_collection.json
+   → Importa esto en Postman para tener todos los endpoints
+
+2. POSTMAN_ENDPOINTS.md
+   → Documentación completa de todos los endpoints
+
+3. POSTMAN_SETUP.md
+   → Pasos detallados para configurar Postman
+
+4. QUICK_REFERENCE.md
+   → Guía rápida de referencia
+
+5. test_api.sh
+   → Script para probar los endpoints desde terminal
+
+═══════════════════════════════════════════════════════════════════════
+
+💡 RECUERDA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• El token expira en 24 horas
+• Si expira, ejecuta login nuevamente para obtener uno nuevo
+• Base URL: http://localhost:8080/api
+• Content-Type: application/json
+• Todos los endpoints protegidos requieren Authorization header
+
+═══════════════════════════════════════════════════════════════════════
